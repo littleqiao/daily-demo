@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<style>
+		input{
+			background: white;
+		}
+		.active{
+			background: #ccc;
+		}
+		div{
+			width: 155px;
+			height: 150px;
+			background: #ccc;
+			display: none;
+		}
+	</style>
+
+	<script>
+		window.onload = function(){
+			var obtn = document.getElementsByTagName("input");
+			var odiv = document.getElementsByTagName("div");
+			var i=0;
+			var len =obtn.length;
+
+
+			for(i=0 ; i<len ; i++){
+			    obtn[i].index = i;
+				obtn[i].onclick = function(){
+					for(i=0 ; i<len ; i++){
+						obtn[i].className = '';
+						odiv[i].style.display = 'none';
+
+					}
+					odiv[this.index].style.display = 'block';
+					this.className = 'active';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="胖子" class="active">
+	<input type="button" value="狮子">
+	<input type="button" value="三姐">
+	<div style="display:block;">胖子爱吃肉</div>
+	<div>狮子爱诗诗</div>
+	<div>三姐爱芝芝</div>
+</body>
+</html>

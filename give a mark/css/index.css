@@ -1,0 +1,19 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#score{
+	width: 135px;
+	height: 28px;
+	margin: 10px auto;
+}
+
+#score li{
+	list-style: none;
+	width: 27px;
+	height: 28px;
+	float: left;
+	background: url(star.gif) no-repeat 0 0;
+	cursor: pointer;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>time</title>
+	<style>
+		body{
+			background: #000;
+		}
+
+		#time{
+			color: #fff;
+			font-size: 250px;
+			width: 800px;
+			height: 300px;
+			margin: 0 auto;
+			margin-top: 180px;
+			margin-left: 200px;
+		}
+
+	</style>
+
+	<script>
+		window.onload = function(){
+			//补位
+			function coverage(num){
+				if(num < 10){
+					return '0'+num;
+				}else{
+					return num;
+				}
+			}
+
+			function showTime(){
+				var odiv = document.getElementById("time");
+				var time = new Date();
+				var hour = coverage(time.getHours());
+				var minutes = coverage(time.getMinutes());
+				var seconds = coverage(time.getSeconds());
+				var str =hour + ':' + minutes + ':' + seconds;
+
+				odiv.innerHTML = str;
+			}
+			//刷新时间
+			setInterval(showTime, 500);
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="time"></div>
+	<div id="year"></div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for</title>
+	<script>
+		window.onload = function(){
+			var obtn = document.getElementsByTagName("input");
+
+			var i=0;
+			var len = obtn.length;
+
+			for(i=0 ; i<len ; i++){
+				obtn[i].onclick = function(){
+					alert(this.value);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="胖子">
+	<input type="button" value="狮子">
+	<input type="button" value="三姐">
+</body>
+</html>

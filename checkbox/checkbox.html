@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	window.onload = function(){
+		var obtn = document.getElementById("btn");
+		var oinput = document.getElementsByTagName('input');
+
+		obtn.onclick = function(){
+			var len = oinput.length;
+
+			var flag = 0;
+			//判断是否全部选中
+			for(var i=0 ; i<len ; i++){
+				if(oinput[i].checked == false){
+					flag = 1;
+				}
+			}
+			//alert(flag);
+			
+			if(flag === 1){
+				for(var i=0; i<len; i++){
+					oinput[i].checked = true;
+				}
+			}else{
+				for(var i=0; i<len; i++){
+					oinput[i].checked = false;
+				}
+			}
+
+
+			
+		}
+	}
+
+</script>
+<body>
+	<p id="btn">全选</p>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+	<input type="checkbox"> <br>
+</body>
+</html>
