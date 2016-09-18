@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>create li</title>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById("btn1");
+			var oul = document.getElementById("ul1");
+
+			btn.onclick = function(){
+				var txt = document.getElementById("txt1");
+				var oli = document.createElement("li");
+				oli.innerHTML = txt.value;
+				//父.appendchild(子节点)
+				oul.appendChild(oli);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" placeholder="回复" id="txt1">
+	<input type="button" value="留言" id="btn1">
+	<ul id="ul1">
+		<li>这里是一楼</li>
+	</ul>
+</body>
+</html>

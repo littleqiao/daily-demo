@@ -1,0 +1,9 @@
+浏览器兼容性
+
+
+1.childNodes 在firefox下会把空文本节点当作子节点（nodetype判断子节点类型 可以解决在火狐下的兼容性；或者用children解决）；
+
+2.firstChild 在firefox下不兼容，应该用firstElementChild； （lastChild同理）
+  //解决火狐和ie兼容性
+  var ofirst = ***.firstChild||***.firstElementChild;
+  ofirst.style.background = 'red';

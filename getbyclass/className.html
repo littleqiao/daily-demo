@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>className</title>
+	<script>
+		function getByClass(oParent,sClass){
+			var aEle = oParent.getElementsByTagName('*');
+			var aResult = [];
+			var i = 0;
+			var len = aEle.length;
+
+			for(i=0 ; i<len ; i++){
+				if(aEle[i].className == sClass){
+					aResult.push(aEle[i]);
+				}
+			}
+			return aResult;
+		}
+
+		window.onload = function(){
+			var oUl = document.getElementById("ul1");
+			var aItem = getByClass(oUl,'item');
+			var i = 0;
+			var len = aItem.length;
+
+			for(i=0 ; i<len ; i++){
+				aItem[i].style.background = 'red';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li class="item"></li>
+		<li></li>
+		<li class="item"></li>
+		<li></li>
+		<li class="item"></li>
+		<li></li>
+		<li class="item"></li>
+	</ul>
+</body>
+</html>
