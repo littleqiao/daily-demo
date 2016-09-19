@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onmousemove</title>
+	<style>
+		body{
+			height: 2000px;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background-color: #3AF13A;
+			position: absolute;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				var oDiv = document.getElementById("div1");
+				var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+				var scrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft;
+
+				oDiv.style.left = oEvent.clientX+scrollLeft+'px';
+				//高度等于可视区高度加上页面高度
+				oDiv.style.top= oEvent.clientY+scrollTop+'px';
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
