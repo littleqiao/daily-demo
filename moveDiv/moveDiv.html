@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>move div</title>
+	<style>
+		body{
+			background: #DEFCF3;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: #ccc;
+			position: absolute;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var timer = null;
+			document.onkeydown = function(ev){
+				var oEvent = ev||event;
+				var oDiv = document.getElementById("div1");
+
+			
+					//alert(oEvent.keyCode);
+					//上38 下40 左37 右39
+					if(oEvent.keyCode == 37){
+						clearTimeout(timer);
+						setTimeout(function(){
+							oDiv.style.left =  oDiv.offsetLeft-20+'px';
+						},100);
+					}else if(oEvent.keyCode == 39){
+						clearTimeout(timer);
+						setTimeout(function(){
+							oDiv.style.left =  oDiv.offsetLeft+20+'px';
+						},100);
+					}else if(oEvent.keyCode == 38){
+						clearTimeout(timer);
+						setTimeout(function(){
+							oDiv.style.top =  oDiv.offsetTop-20+'px';
+						},100);
+					}else if(oEvent.keyCode == 40){
+						clearTimeout(timer);
+						setTimeout(function(){
+							oDiv.style.top =  oDiv.offsetTop+20+'px';
+						},100);
+					}
+				
+				
+
+				//键盘判断连续按键需要一个时间间隔。因为捕获的是onkeydown , 而键盘在第一次keydown后，不能连续触发onkeydown，因为你没有keyup,所以需要一个间隔来判断是连按。
+
+				
+			};
+			
+		};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
