@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>diy menu</title>
+	<style>
+		#menu{
+			width: 40px;
+			height: 100px;
+			background: #ccc;
+			position: absolute;
+			display: none;
+		}
+		#menu li{
+			list-style: none;
+			margin-left: -10px;
+			margin-top: 2px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			document.oncontextmenu = function(ev){
+				var oEvent = ev||event;
+				var oDiv = document.getElementById("menu");
+
+				oDiv.style.display = 'block';
+				oDiv.style.left = oEvent.clientX+'px'; 
+				oDiv.style.top = oEvent.clientY+'px'; 
+				//阻止默认事件
+				return false;
+			};
+			document.onclick = function(){
+				var oDiv = document.getElementById("menu");
+				oDiv.style.display = 'none';
+			};
+		};
+	</script>
+</head>
+<body>
+	<ul id="menu">
+		<li>狮子</li>
+		<li>胖子</li>
+		<li>三姐</li>
+		<li>过深</li>
+	</ul>
+</body>
+</html>

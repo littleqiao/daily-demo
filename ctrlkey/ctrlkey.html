@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ctrlkey</title>
+	<style>
+		body{
+			background:#ccc;
+		}
+		#box{
+			width: 200px;
+			height: 300px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oTxt1 = document.getElementById("txt1");
+			var oTxt2 = document.getElementById("txt2");
+
+			oTxt2.onkeydown = function(ev){
+				var oEvent = ev||event;
+				//当按下ctrl+回车时才会提交留言
+				if(oEvent.ctrlKey && oEvent.keyCode == 13){
+					oTxt1.value += oTxt2.value+'\n';
+					oTxt2.value = '';
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="box">
+		<textarea  id="txt1" cols="30" rows="10"></textarea><br>
+		<input type="text" id="txt2" placeholder="留言">	
+	</div>
+</body>
+</html>
