@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装cookie</title>
+	<script>
+		window.onload = function(){
+			//设置cookie
+			function setCookie(name,value,date){
+				var oDate = new Date();
+
+				oDate.setDate(oDate.getDate()+date);
+
+				document.cookie = name + '=' + value + ';expires=' + oDate;
+ 			}
+ 			//取cookie的值
+ 			function getCookie(name){
+ 				//cookie是以 分号+空格 分隔开的字符串
+ 				var arr = document.cookie.split('; ');
+ 				var len = arr.length;
+ 				var i = 0;
+
+ 				for(i=0 ; i<len ; i++){
+ 					//username=***,所以再次分割
+ 					var arr2 = arr[i].split('=');
+ 					if(arr2[0] == name){
+ 						return arr2[1];
+ 					}
+ 				}
+ 				//当第一次没有cookie时返回空值
+ 				return '';
+ 			} 	
+ 			//删除cookie信息
+ 			/*function removeCookie(name){
+ 				setCookie(name,'1',-1);
+ 			}		
+
+ 			setCookie('username','狮子',30);
+ 			setCookie('password','123456');
+
+ 			alert(getCookie('password'));*/
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+
+

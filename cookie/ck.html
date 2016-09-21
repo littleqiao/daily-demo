@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+	<script>
+
+		window.onload = function(){
+			//格式：名字=值；
+			//不会覆盖
+			//过期时间 expires=时间；
+
+			var oDate = new Date();
+			oDate.setDate(oDate.getDate()+30);
+
+			document.cookie = "user=qiaoba;expires="+oDate;
+			document.cookie = "pass=123";
+
+			alert(document.cookie);
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
