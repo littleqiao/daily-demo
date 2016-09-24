@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>new ajax</title>
+	<script src="myAjax.js"></script>
+	<script>
+	window.onload = function(){
+		
+		ajax('data.txt',function(str){
+			alert(str);
+		},function(){
+			alert("失败");
+		});
+	};
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

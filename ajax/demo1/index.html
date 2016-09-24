@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script src="js/ajax.js"></script>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById("btn1");
+
+			oBtn.onclick = function(){
+				ajax('wuliao.txt',function(str){
+					alert(str);
+				});
+			};
+
+		};
+	</script>
+</head>
+<body>
+	点击按钮时 读取文件<br>
+	<input type="button" value="读取" id="btn1">
+</body>
+</html>

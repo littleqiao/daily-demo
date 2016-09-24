@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pages</title>
+	<script src="js/ajax.js"></script>
+	<script>
+		window.onload = function(){
+			//获取按钮和列表
+			var oUl = document.getElementById("ul1");
+			var aBtn = document.getElementsByTagName("a");
+			var len = aBtn.length;
+			
+			//循环添加事件
+			for(var i=0 ; i<len ; i++){
+				aBtn[i].index = i;//添加索引
+				aBtn[i].onclick = function(){
+					//利用ajax获取用户文件
+					ajax('user'+(this.index+1)+'.txt',function(str){
+						var aDate = eval(str);
+						var len = aDate.length;
+
+						oUl.innerHTML = '';
+						for(i=0 ; i<len ; i++){
+							//创建li并插入到ul中
+							var oLi = document.createElement("li");
+
+							oLi.innerHTML = '<strong>' + aDate[i].user + '</strong>' + '<strong>' + aDate[i].pass + '</strong>';
+							oUl.appendChild(oLi);
+						}
+					});
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<a href="javascript:;">1</a>
+	<a href="javascript:;">2</a>
+	<a href="javascript:;">3</a>
+	<ul id="ul1"></ul>
+</body>
+</html>
