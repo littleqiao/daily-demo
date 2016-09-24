@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>move</title>
+	<style>
+		body{
+			background: #ccc;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: #936060;
+			position: absolute;
+			left:0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			var oDiv = document.getElementById("div1");
+			var timer = null;
+			var spead = 10;
+
+			//匀速直线运动
+			oBtn.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(oDiv.offsetLeft >= 300){
+						clearInterval(timer);
+					}else{
+						oDiv.style.left = oDiv.offsetLeft + spead + 'px';
+					}
+					
+				},30);
+				
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="奔跑">
+	<div id="div1"></div>
+</body>
+</html>

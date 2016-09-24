@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sdiebar</title>
+	<style>
+		body{
+			background: #ccc;
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			width: 150px;
+			height: 200px;
+			position: absolute;
+			background: #51409B;
+			top: 200px;
+			left:-150px;
+		}
+		#div1 span{
+			width: 20px;
+			height: 45px;
+			background: #0CA5F1;
+			position: absolute;
+			left: 150px;
+			top: 70px;
+
+		}
+	</style>
+	<script>
+		window.onload = function (){
+			var oDiv = document.getElementById("div1");
+			var timer = null;
+			//定义运动框架
+			function moveStart(target){
+				//清除之前定时器
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var speed = 0;
+					//用当前offsetLeft判断速度
+					if(oDiv.offsetLeft < target){
+						speed = 10;
+					}else{
+						speed = -10;
+					}
+					
+					if(oDiv.offsetLeft == target){
+						clearInterval(timer);
+					}else{
+						oDiv.style.left = oDiv.offsetLeft + speed + 'px';  
+					}
+				},30);
+			}
+
+			oDiv.onmouseover = function(){
+				moveStart(0);
+			};
+			oDiv.onmouseout = function(){
+				moveStart(-150);
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<span>分享</span>
+	</div>
+</body>
+</html>
