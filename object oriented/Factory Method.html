@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>factory method</title>
+	<script>
+		window.onload = function(){
+			/*//用工厂方式构造对象
+			function createPerson(name,sex){   //构造函数
+				//1.空白对象
+				var obj = new Object();
+				//2.加工
+				obj.name = name;
+				obj.sex = sex;
+				obj.showName = function(){
+					alert(this.name);
+				};
+				obj.showSex = function(){
+					alert(this.sex);
+				};
+				//3.返回
+				return obj;
+			}
+
+			var p1 = createPerson('qiao','男');
+			var p2 = createPerson('ba','男');*/
+			/*工厂方式的问题：
+				1.没有new
+				2.每个对象都有自己的一套方法----浪费资源
+
+			*/
+			//改进版(解决了new 的问题，共用一套方法的问题还没有解决)
+			function CreatePerson(name,sex){
+				this.name = name;
+				this.sex = sex;
+				
+				this.showSex =function(){
+					alert(this.sex);
+				};
+			}
+			//在原型上定义方法，所有对象就会共用一套方法，节省资源
+			CreatePerson.prototype.showName = function(){
+				alert(this.name);
+			};
+			var p1 = new CreatePerson('qiao','男');
+			var p2 = new CreatePerson('ba','男');
+			p1.showName();
+			p2.showName();
+			alert(p1.showName == p2.showName);
+			
+			
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

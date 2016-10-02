@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 在ie运行最新的渲染模式 -->
+	<meta name="viewport" content="width=deivce-width,initial-scale=1"><!-- 兼容移动端设备 -->
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<title>bootstrap test</title>
+</head>
+<body>
+	 <div class="container"><!-- 辅助类 -->
+	 	<h1 class="text-primary">text-primary 这是一段文字</h1>
+	 	<h1 class="text-success">text-success 这是一段文字</h1>
+	 	<h1 class="text-warning">text-warning 这是一段文字</h1>
+	 	<h1 class="text-danger"> text-danger  这是一段文字</h1>
+	 	<h1 class="text-info">   text-info    这是一段文字</h1>
+	 	<h1 class="text-muted">  text-muted    这是一段文字</h1>
+
+		
+		<!-- 背景 -->
+	 	<h1 class="bg-primary">text-primary 这是一段文字</h1>
+	 	<h1 class="bg-success">text-success 这是一段文字</h1>
+	 	<h1 class="bg-warning">text-warning 这是一段文字</h1>
+	 	<h1 class="bg-danger"> text-danger  这是一段文字</h1>
+	 	<h1 class="bg-info">   text-info    这是一段文字</h1>
+	 	<h1 class="bg-muted">  text-muted    这是一段文字</h1>
+
+		<br><br><br>
+	 	<!-- 关闭按钮 -->
+	 	<button class="close"><span>&times;</span></button>
+
+		<br><br><br>
+	 	<!-- 倒三角 -->
+	 	<span class="caret"></span>
+		<br><br><br>
+
+	 	<!-- 浮动 -->
+	 	<div style="border:1px solid red;" class="clearfix">
+	 		<div class="bg-primary pull-left">这是左边的内容</div><!-- 浮动会将块级元素转换为行内元素 -->
+	 		<div class="bg-danger pull-right">这是右边的内容</div>
+	 	</div>
+		<br><br><br>
+
+	 	<!-- 居中显示 -->
+	 	<div class="center-block text-center" style="width:400px;border:1px solid red;">
+	 		我是居中的盒子
+	 	</div>
+		<br><br><br>
+
+	 	<!-- 显示隐藏 -->
+	 	<div class="row">
+	 		<div class="col-lg-8">左侧</div>
+	 		<div class="col-lg-4 visible-lg">右侧</div>
+	 	</div>
+	 	<br><br><br>
+
+
+	 	<!-- 表格 -->
+	 	<table class="table table-bordered table-hover table-striped"><!-- table-bordered 边框  table-striped 斑马线 -->
+	 		<thead><!-- 表格的头部 -->
+	 			<tr class="success"><!-- danger 淡紫 active 浅蓝 info 淡蓝  warning 白色 success 浅绿 -->
+	 				<th>姓名</th>
+	 				<th>性别</th>
+	 				<th>年龄</th>
+	 			</tr>
+	 		</thead>
+	 		<tbody>
+	 			<tr>
+	 				<td>张三</td>
+	 				<td>男</td>
+	 				<td>18</td>
+	 			</tr>
+	 			<tr>
+	 				<td>张三</td>
+	 				<td>男</td>
+	 				<td>18</td>
+	 			</tr>
+	 			<tr>
+	 				<td>张三</td>
+	 				<td>男</td>
+	 				<td>18</td>
+	 			</tr>
+	 			<tr>
+	 				<td>张三</td>
+	 				<td>男</td>
+	 				<td>18</td>
+	 			</tr>
+	 		</tbody>
+	 	</table>
+	 	<br><br><br>
+
+
+	 	<!-- 表单 -->
+	 	<form action="" class="form">
+	 		<div class="form-group">
+	 			<label for="user">username</label>
+	 			<input type="text" class="form-control" placeholder="请输入用户名：">
+	 		</div>
+	 		<div class="form-group">
+	 			<label for="pass">username</label>
+	 			<input type="pass" class="form-control" placeholder="请输入密码：">
+	 		</div>
+	 		<div class="checkbox"><!-- 复选框 -->
+	 			<label>
+	 				<input type="checkbox">篮球
+	 			</label>
+	 			<label>
+	 				<input type="checkbox">足球
+	 			</label>
+	 			<label>
+	 				<input type="checkbox">网球
+	 			</label>
+	 		</div>
+	 		<div class="radio"><!-- 单选框 -->
+	 			<label>
+	 				<input type="radio" name="sport">篮球
+	 			</label>
+	 			<label>
+	 				<input type="radio" name="sport">足球
+	 			</label>
+	 			<label>
+	 				<input type="radio" name="sport">网球
+	 			</label>
+	 		</div>
+	 		<div class="form-group"><!-- 下拉列表 -->
+				<label for="list">下拉列表</label>
+	 			<select class="form-control">
+	 				<option value="">1</option>
+	 				<option value="">2</option>
+	 				<option value="">3</option>
+	 			</select>
+	 		</div>
+	 	</form>
+	 </div>	
+	 
+
+
+	 <script src="js/jquery-2.1.4.min.js"></script><!-- 因为bootstrap是基于jquery的，所以引入bootstrap之前必须先引入jquery -->
+     <script src="bootstrap/js/bootstrap.min.js"></script> 
+</body>
+</html>
