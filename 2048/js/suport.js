@@ -97,6 +97,15 @@ function canMoveDown(board){
 	return false;
 }
 
+function nomove(board){
+	if(canMoveLeft(board)||canMoveRight(board)||canMoveUp(board)||canMoveDown(board)){
+		return false;
+	}else{
+		return true;
+	}
+}
+
+
 //判断水平之间有无障碍物
 function noBlock(row,col1,col2,board){
 	for(var i=col1+1 ; i<col2 ; i++){

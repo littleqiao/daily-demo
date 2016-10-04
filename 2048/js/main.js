@@ -116,7 +116,15 @@ $(document).keydown(function(event){
 	}
 });
 
-function isgameover(){}
+function isgameover(){
+	if(nospace(board) && nomove(board)){
+		gameover();
+	}
+}
+
+function gameover(){
+	alert("少年，继续努力啊！");
+}
 
 function moveLeft(){
 	if(!canMoveLeft(board)){
@@ -216,7 +224,7 @@ function moveUp(){
 	}
 }
 
-/*function moveDown(){
+function moveDown(){
 	if(!canMoveDown(board)){
 		return false;
 	}else{
@@ -225,13 +233,13 @@ function moveUp(){
 			for( var i=2 ; i>=0 ; i--){
 				if(board[i][j] != 0){
 					for( var k=3 ; k>i ; k--){
-						if(board[k][j] == 0 && noBlockV(j,k,i,board)){
+						if(board[k][j] == 0 && noBlockV(j,i,k,board)){
 							showMoveAnimation(i,j,k,j);
 							board[k][j] = board[i][j];
 							board[i][j] = 0;
 							continue;
 						}
-						else if(board[k][j] == board[i][j] && noBlockV(j,k,i,board)){
+						else if(board[k][j] == board[i][j] && noBlockV(j,i,k,board)){
 							showMoveAnimation(i,j,k,j);
 							board[k][j] *= 2;
 							board[i][j] = 0;
@@ -245,34 +253,4 @@ function moveUp(){
 		return true;
 	}
 }
-*/
-function moveDown(){
-    if( !canMoveDown( board ) )
-        return false;
 
-    //moveDown
-    for( var j = 0 ; j < 4 ; j ++ )
-        for( var i = 2 ; i >= 0 ; i -- ){
-            if( board[i][j] != 0 ){
-                for( var k = 3 ; k > i ; k -- ){
-
-                    if( board[k][j] == 0 && noBlockV( j , i , k , board ) ){
-                        showMoveAnimation( i , j , k , j );
-                        board[k][j] = board[i][j];
-                        board[i][j] = 0;
-                        continue;
-                    }
-                    else if( board[k][j] == board[i][j] && noBlockV( j , i , k , board ) ){
-                        showMoveAnimation( i , j , k , j );
-                        board[k][j] *= 2;
-                        board[i][j] = 0;
-
-                        continue;
-                    }
-                }
-            }
-        }
-
-    setTimeout("updateBoardView()",200);
-    return true;
-}
