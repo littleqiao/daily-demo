@@ -59,6 +59,8 @@ function init(){
 		}
 	}
 
+	score = 0;
+	updateScore(score);
 	updateBoardView();
 }
 
