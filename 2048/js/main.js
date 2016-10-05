@@ -151,7 +151,7 @@ $(document).keydown(function(event){
 	}
 });
 
-//获取触摸起始坐标，并加以相应逻辑
+//获取触摸起始坐标，并加以相应逻辑,来实现移动端的操作
 document.addEventListener('touchstart',function(event){
 	startx = event.touches[0].pageX;
 	starty = event.touches[0].pageY;
@@ -162,7 +162,7 @@ document.addEventListener('touchend',function(event){
 	endy = event.changedTouches[0].pageY;
 
 	var vectorx = endx - startx;
-	var vectory = endy - endx;
+	var vectory = endy - startx;
 
 	if(Math.abs(vectorx) > Math.abs(vectory)){
 		//在x轴上的滑动
