@@ -3,9 +3,34 @@ var score = 0;
 //记录每一个格子是否发生碰撞
 var hasConflicted = new Array();
 
+//记录滑动开始和结束的坐标
+var startx = 0;
+var starty = 0;
+var endx = 0;
+var endy = 0;
+
 $(document).ready(function(){
+	prepareForMobile();
 	newgame();
 });
+
+function prepareForMobile(){
+	if(documentWidth > 500){
+		gridContainerWidth = 500;
+		cellSpace = 20;
+		cellSideLength = 100;
+	}else{
+		$("#grid-container").css('width',gridContainerWidth - 2 * cellSpace);
+		$("#grid-container").css('height',gridContainerWidth - 2 * cellSpace);
+		$("#grid-container").css('padding',cellSpace);
+		$("#grid-container").css('border-radius',0.02 * gridContainerWidth);
+
+		$(".grid-cell").css('width',cellSideLength);
+		$(".grid-cell").css('height',cellSideLength);
+		$(".grid-cell").css('border-radius',0.02 * cellSideLength);
+	}
+
+}
 
 function newgame(){
 	//初始化格子
@@ -47,11 +72,11 @@ function updateBoardView(){
 			if(board[i][j] == 0){
 				theNumberCell.css('width','0px');
 				theNumberCell.css('height','0px');
-				theNumberCell.css('top',getPosTop(i,j)+50);
-				theNumberCell.css('left',getPosLeft(i,j)+50);
+				theNumberCell.css('top',getPosTop(i,j)+cellSideLength * 0.5);
+				theNumberCell.css('left',getPosLeft(i,j)+cellSideLength * 0.5);
 			}else{
-				theNumberCell.css('width','100px');
-				theNumberCell.css('height','100px');
+				theNumberCell.css('width',cellSideLength);
+				theNumberCell.css('height',cellSideLength);
 				theNumberCell.css('top',getPosTop(i,j));
 				theNumberCell.css('left',getPosLeft(i,j));
 				theNumberCell.css('background-color',getNumberBackgroundColor(board[i][j]));
@@ -62,6 +87,8 @@ function updateBoardView(){
 			hasConflicted[i][j] = false; 
 		}
 	}
+	$(".number-cell").css("line-height",cellSideLength+"px");
+	$(".number-cell").css("font-size",0.6 * cellSideLength+"px");
 }
 
 function generateOneNumber(){
@@ -121,6 +148,52 @@ $(document).keydown(function(event){
 		default://default
 			break;
 
+	}
+});
+
+//获取触摸起始坐标，并加以相应逻辑
+document.addEventListener('touchstart',function(event){
+	startx = event.touches[0].pageX;
+	starty = event.touches[0].pageY;
+});
+
+document.addEventListener('touchend',function(event){
+	endx = event.changedTouches[0].pageX;
+	endy = event.changedTouches[0].pageY;
+
+	var vectorx = endx - startx;
+	var vectory = endy - endx;
+
+	if(Math.abs(vectorx) > Math.abs(vectory)){
+		//在x轴上的滑动
+		if(vectorx > 0){
+			//move right
+			if(moveRight()){
+				generateOneNumber();
+				isgameover();
+			}
+		}else{
+			//move left
+			if(moveLeft()){
+				generateOneNumber();
+				isgameover();
+			}
+		}
+	}else{
+		//在y轴上的滑动
+		if(vectory > 0){
+			//move down
+			if(moveDown()){
+				generateOneNumber();
+				isgameover();
+			}
+		}else{
+			//move up
+			if(moveUp()){
+				generateOneNumber();
+				isgameover();
+			}
+		}
 	}
 });
 

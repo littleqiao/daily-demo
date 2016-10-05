@@ -1,9 +1,15 @@
+documentWidth = window.screen.availWidth;		//当前设备可以使用的宽度
+gridContainerWidth = 0.92 * documentWidth;		//大盒子的宽度
+cellSideLength = 0.18 * documentWidth;			//小格子的边长
+cellSpace = 0.04 * documentWidth;				//格子间的空隙
+
+
 function getPosTop(i,j){
-	return 20+i*120;
+	return cellSpace+i*(cellSideLength + cellSpace);
 }
 
 function getPosLeft(i,j){
-	return 20+j*120;
+	return cellSpace+j*(cellSideLength + cellSpace);
 }
 
 function getNumberBackgroundColor(number){
