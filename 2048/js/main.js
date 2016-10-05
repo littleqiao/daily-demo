@@ -9,6 +9,7 @@ var starty = 0;
 var endx = 0;
 var endy = 0;
 
+
 $(document).ready(function(){
 	prepareForMobile();
 	newgame();
@@ -122,24 +123,28 @@ function generateOneNumber(){
 $(document).keydown(function(event){
 	switch(event.keyCode){
 		case 37://left
+			event.preventDefault();
 			if(moveLeft()){
 				generateOneNumber();
 				isgameover();
 			}
 			break;
 		case 38://up
+			event.preventDefault();
 			if(moveUp()){
 				generateOneNumber();
 				isgameover();
 			}
 			break;
 		case 39://right
+			event.preventDefault();
 			if(moveRight()){
 				generateOneNumber();
 				isgameover();
 			}
 			break;
 		case 40://down
+			event.preventDefault();
 			if(moveDown()){
 				generateOneNumber();
 				isgameover();
@@ -157,6 +162,10 @@ document.addEventListener('touchstart',function(event){
 	starty = event.touches[0].pageY;
 });
 
+document.addEventListener('touchmove',function(event){
+	event.preventDefault();
+});
+
 document.addEventListener('touchend',function(event){
 	endx = event.changedTouches[0].pageX;
 	endy = event.changedTouches[0].pageY;
@@ -164,37 +173,48 @@ document.addEventListener('touchend',function(event){
 	var vectorx = endx - startx;
 	var vectory = endy - starty;
 
-	if(Math.abs(vectorx) > Math.abs(vectory)){
-		//在x轴上的滑动
-		if(vectorx > 0){
-			//move right
-			if(moveRight()){
-				generateOneNumber();
-				isgameover();
-			}
-		}else{
-			//move left
-			if(moveLeft()){
-				generateOneNumber();
-				isgameover();
-			}
-		}
+	if(Math.abs(vectorx) < 0.3 * documentWidth && Math.abs(vectory) < 0.3 * documentWidth){
+		return;
 	}else{
-		//在y轴上的滑动
-		if(vectory > 0){
-			//move down
-			if(moveDown()){
-				generateOneNumber();
-				isgameover();
+		if(Math.abs(vectorx) > Math.abs(vectory)){
+			//在x轴上的滑动
+			if(vectorx > 0){
+				//move right
+				event.preventDefault();
+				if(moveRight()){
+					generateOneNumber();
+					isgameover();
+				}
+			}else{
+				//move left
+				event.preventDefault();
+				if(moveLeft()){
+					generateOneNumber();
+					isgameover();
+				}
 			}
 		}else{
-			//move up
-			if(moveUp()){
-				generateOneNumber();
-				isgameover();
+			//在y轴上的滑动
+			if(vectory > 0){
+				//move down
+				event.preventDefault();
+				if(moveDown()){
+					generateOneNumber();
+					isgameover();
+				}
+			}else{
+				//move up
+				event.preventDefault();
+				if(moveUp()){
+					generateOneNumber();
+					isgameover();
+				}
 			}
+	
 		}
 	}
+
+	
 });
 
 function isgameover(){
