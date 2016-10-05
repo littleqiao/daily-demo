@@ -162,7 +162,7 @@ document.addEventListener('touchend',function(event){
 	endy = event.changedTouches[0].pageY;
 
 	var vectorx = endx - startx;
-	var vectory = endy - startx;
+	var vectory = endy - starty;
 
 	if(Math.abs(vectorx) > Math.abs(vectory)){
 		//在x轴上的滑动
