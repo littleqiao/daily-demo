@@ -175,7 +175,7 @@ document.addEventListener('touchend',function(event){
 	var vectorx = endx - startx;
 	var vectory = endy - starty;
 
-	if(Math.abs(vectorx) < 0.3 * documentWidth && Math.abs(vectory) < 0.3 * documentWidth){
+	if(Math.abs(vectorx) < 0.2 * documentWidth && Math.abs(vectory) < 0.2 * documentWidth){
 		return;
 	}else{
 		if(Math.abs(vectorx) > Math.abs(vectory)){
