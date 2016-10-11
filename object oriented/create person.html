@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>person</title>
+	<script>
+		function Person(name,sex){
+			this.name = name;
+			this.sex = sex;
+		}
+		Person.prototype.showName =function(){
+			alert(this.name);
+		};
+		Person.prototype.showSex =function(){
+			alert(this.sex);
+		};
+		window.onload = function (){
+			var p1 = new Person('qiaoba','男');
+			p1.showName();
+			p1.showSex();
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

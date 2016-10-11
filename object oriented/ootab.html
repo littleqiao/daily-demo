@@ -21,26 +21,33 @@
 	<script>
 		var oBtn = null;
 		var oDiv = null;
-		window.onload = function(){
-			oBtn = document.getElementsByTagName("input");
-			oDiv = document.getElementsByTagName("div");
+		function TabSwitch(){
+			this.oBtn = document.getElementsByTagName("input");
+			this.oDiv = document.getElementsByTagName("div");
 			var i=0;
-			var len =oBtn.length;
+			var _this = this;
+			var len =this.oBtn.length;
 
 
 			for(i=0 ; i<len ; i++){
-			    oBtn[i].index = i;
-				oBtn[i].onclick = tab;
+			    this.oBtn[i].index = i;
+				this.oBtn[i].onclick = function(){
+					_this.tab(this);
+				};
 			}
 		};
-		function tab(){
-			for(i=0 ; i<oBtn.length; i++){
-				oBtn[i].className = '';
-				oDiv[i].style.display = 'none';
+		TabSwitch.prototype.tab = function(oBtn){
+			for(i=0 ; i<this.oBtn.length; i++){
+				this.oBtn[i].className = '';
+				this.oDiv[i].style.display = 'none';
 			}
-			oDiv[this.index].style.display = 'block';
-			this.className = 'active';
+			this.oDiv[oBtn.index].style.display = 'block';
+			oBtn.className = 'active';
 		}
+
+		window.onload = function(){
+			var oTab = new TabSwitch();
+		};
 	</script>
 </head>
 <body>

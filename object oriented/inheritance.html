@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>inheritance</title>
+	<script>
+		function Person(name,sex){
+			this.name = name;
+			this.sex = sex;
+		}
+		Person.prototype.showName = function(){
+			alert(this.name);
+		};
+		Person.prototype.showSex = function(){
+			alert(this.sex);
+		};
+		function Worker(name,sex,job){
+			//构造函数伪装 调用父级的构造函数---为了继承父级的属性
+			Person.call(this,name,sex);
+			this.job = job;
+		}
+		//通过父级的原型来继承父级的方法
+		/*Worker.prototype = Person.prototype;*/// 引用  指向同一个地址 但这样做有一个缺点：给子类添加方法会影响到父级
+		for(var i in Person.prototype){
+			Worker.prototype[i] = Person.prototype[i];
+		}
+
+		Worker.prototype.showJob = function(){
+			alert(this.job);
+		};
+		window.onload = function(){
+			/*var p1 = new Worker('qiao','男','前端');
+			p1.showName();
+			p1.showSex();
+			p1.showJob();*/
+			/*alert(Person.prototype.showJob);*/
+			var op = new Person('qiao','男');
+			var ow = new Worker('qiao','男','前端');
+
+			op.showName();
+			op.showSex();
+
+			ow.showName();
+			ow.showSex();
+			ow.showJob();
+		};
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
