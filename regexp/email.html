@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>email</title>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			var oTxt = document.getElementById("txt");
+
+			var re = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/;
+
+			oBtn.onclick = function(){
+				if(re.test(oTxt.value)){
+					alert("正确邮箱");
+				}else{
+					alert("错误邮箱");
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="验证">
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>page count</title>
+</head>
+<body>
+	<script>
+		if(localStorage.pagecount){
+			localStorage.pagecount = Number(localStorage.pagecount) + 1;
+		}else{
+			localStorage.pagecount = 1;
+		}
+		document.write("总访问数："+localStorage.pagecount+"<br/>");
+
+		if(sessionStorage.pagecount){
+			sessionStorage.pagecount = Number(sessionStorage.pagecount) + 1;
+		}else{
+			sessionStorage.pagecount = 1;
+		}
+		document.write("当前会话访问数："+sessionStorage.pagecount+"<br/>");
+	</script>
+</body>
+</html>
